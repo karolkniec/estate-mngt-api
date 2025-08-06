@@ -39,7 +39,7 @@ class User(AbstractUser):
     class Meta:
         verbose_name = _("User")
         verbose_name_plural = _("Users")
-        ordering = ["-datae_joined"]
+        ordering = ["-date_joined"]
 
     @property
     def get_full_name(self) -> str:
