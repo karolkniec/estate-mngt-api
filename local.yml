@@ -59,13 +59,13 @@ services:
       dockerfile: ./docker/local/Dockerfile
     container_name: estate_client
     image: estate_client
-    #ports:
-    #  - "3000:3000"
     expose:
       - "3000"
     volumes:
       - ./client:/app
       - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
     networks:
       - estate_prod_nw
   nginx:
@@ -79,8 +79,6 @@ services:
     volumes:
        - ./staticfiles:/app/staticfiles
        - logs_store:/var/log/nginx
-    environment:
-      - WATCHPACK_POLLING=true
     depends_on:
       - api
     networks:
